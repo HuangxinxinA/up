@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: "003615"
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/db_up?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&useSSL=false
+
+
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 5
+      max-wait: 60000
+      time-between-eviction-runsMillis: 60000
+      min-evictable-idle-timeMillis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+
+
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+
+  jackson:
+    serialization:
+      #\u4FDD\u8BC1@ResponseBody\u65F6\uFF0CDate\u4F1A\u81EA\u52A8\u8F6C\u5316\u4E3AtimeStamp\u7684\u6570\u503C(\u6BEB\u79D2\u6570)
+      WRITE_DATES_AS_TIMESTAMPS: true
+    time-zone: GMT+8
+
+
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+
+  mybatis:
+    mapper-locations: classpath:com/ffcs/up/dao/**/*Mapper.xml
